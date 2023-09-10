@@ -6,15 +6,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaterialModule } from './shared/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListagemClienteComponent } from './components/listagem-cliente/listagem-cliente.component';
 import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
+import { ListagemClienteComponent } from './components/listagem-cliente/listagem-cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ListagemClienteComponent,
-    SalvarClienteComponent
+    SalvarClienteComponent,
+    ListagemClienteComponent
   ],
   imports: [
     BrowserModule,
