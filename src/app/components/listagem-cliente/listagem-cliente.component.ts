@@ -36,5 +36,11 @@ dataSource = ELEMENT_DATA;
   ngOnInit(): void {
   }
 
+  listarCliente() {
+   this.clienteService.listarCliente().subscribe(clienteApi => {
+    this.clientes = clienteApi;
+   })
+  }
+
 
 }
