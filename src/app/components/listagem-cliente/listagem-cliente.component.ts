@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteService } from 'src/app/shared/cliente.service';
 import { Cliente } from 'src/app/shared/model/cliente';
 export interface PeriodicElement {
   name: string;
@@ -31,7 +32,7 @@ export class ListagemClienteComponent implements OnInit {
 displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
   }

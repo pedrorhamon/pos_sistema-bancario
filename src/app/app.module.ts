@@ -8,6 +8,7 @@ import { MaterialModule } from './shared/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
 import { ListagemClienteComponent } from './components/listagem-cliente/listagem-cliente.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ListagemClienteComponent } from './components/listagem-cliente/listagem
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
