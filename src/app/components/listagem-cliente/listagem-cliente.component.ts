@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cliente } from 'src/app/shared/model/cliente';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -24,6 +25,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./listagem-cliente.component.css']
 })
 export class ListagemClienteComponent implements OnInit {
+
+  clientes: Cliente[] = [];
 
 displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 dataSource = ELEMENT_DATA;
