@@ -35,6 +35,7 @@ dataSource = ELEMENT_DATA;
   constructor(private clienteService: ClienteService) { }
 
   ngOnInit(): void {
+    this.listarCliente();
   }
 
   listarCliente() {
