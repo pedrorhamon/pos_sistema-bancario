@@ -18,4 +18,8 @@ export class ClienteService {
   salvarCliente(): Subscriber<Cliente> {
     return this.httpCliente.post<Cliente>(`${environment.api}`);
   }
+
+  atualizarCliente(id: number): Subscriber<Cliente> {
+    return this.httpCliente.put<Cliente>(`${environment.api}/${id}`);
+  }
 }
