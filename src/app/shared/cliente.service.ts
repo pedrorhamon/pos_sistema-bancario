@@ -12,6 +12,10 @@ export class ClienteService {
   constructor(private httpCliente: HttpClient) { }
 
   listarCliente(): Subscriber<Cliente[]> {
-    return this.httpCliente.get<Cliente[]>(`${environment.api}\clienteas`);
+    return this.httpCliente.get<Cliente[]>(`${environment.api}\clientes`);
+  }
+
+  salvarCliente(): Subscriber<Cliente> {
+    return this.httpCliente.post<Cliente>(`${environment.api}`);
   }
 }
