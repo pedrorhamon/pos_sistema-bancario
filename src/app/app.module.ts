@@ -9,13 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
 import { ListagemClienteComponent } from './components/listagem-cliente/listagem-cliente.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CartoesComponent } from './components/cartoes/cartoes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SalvarClienteComponent,
-    ListagemClienteComponent
+    ListagemClienteComponent,
+    CartoesComponent
   ],
   imports: [
     BrowserModule,
