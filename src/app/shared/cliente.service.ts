@@ -1,18 +1,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subscriber } from 'rxjs';
-import { Cliente } from './model/cliente';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Cliente } from './model/cliente';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
 
+  api = `${environment.api}/clientes/`;
+
   constructor(private httpCliente: HttpClient) { }
 
-  listarCliente(): Subscriber<Cliente[]> {
-    return this.httpCliente.get<Cliente[]>(`${environment.api}\clientes`);
+  listarCliente(): Observable<Cliente[]> {
+    return this.httpCliente.get<Cliente[]>(this.api);
   }
 
   salvarCliente(): Subscriber<Cliente> {
