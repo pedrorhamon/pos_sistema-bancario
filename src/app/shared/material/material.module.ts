@@ -91,7 +91,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSortModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
   ]
 })
 export class MaterialModule {

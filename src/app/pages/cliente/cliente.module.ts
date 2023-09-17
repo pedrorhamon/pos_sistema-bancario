@@ -20,7 +20,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     HttpClientModule,
     MaterialModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
    ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [provideNgxMask()],

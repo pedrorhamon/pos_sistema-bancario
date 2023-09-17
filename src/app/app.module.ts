@@ -11,7 +11,7 @@ import { ListagemClienteComponent } from './components/listagem-cliente/listagem
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
 import { MaterialModule } from './shared/material/material.module';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -37,3 +37,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+function provideNgxMask(): import("@angular/core").Provider {
+  throw new Error('Function not implemented.');
+}
+
