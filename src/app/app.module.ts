@@ -12,14 +12,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
 import { MaterialModule } from './shared/material/material.module';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { ClienteModule } from './pages/cliente/cliente.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    SalvarClienteComponent,
-    ListagemClienteComponent,
-    CartoesComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +28,8 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
     HttpClientModule,
     MaterialModule,
     NgxMaskDirective,
-    NgxMaskPipe
-
+    NgxMaskPipe,
+    ClienteModule
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent]
