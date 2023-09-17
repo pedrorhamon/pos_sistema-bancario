@@ -11,6 +11,7 @@ import { ListagemClienteComponent } from './components/listagem-cliente/listagem
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
 import { MaterialModule } from './shared/material/material.module';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -27,10 +28,12 @@ import { MaterialModule } from './shared/material/material.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    NgxMaskDirective,
+    NgxMaskPipe
 
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
