@@ -34,7 +34,7 @@ export class SalvarClienteComponent implements OnInit {
 
   cadastrar() {
     const cliente: Cliente = this.formGroup.value;
-    this.clienteService.(cliente).subscribe({
+    this.clienteService.salvarCliente(cliente).subscribe({
       next: () => {
         Swal.fire({
           icon: 'success',
@@ -45,7 +45,7 @@ export class SalvarClienteComponent implements OnInit {
         })
         this.router.navigate(['/cliente'])
       },
-      error: (error: any) => {
+      error: (error) => {
         console.error(error)
         Swal.fire({
           icon: 'error',
