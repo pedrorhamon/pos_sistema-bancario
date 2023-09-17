@@ -17,9 +17,9 @@ export class ClienteService {
     return this.httpCliente.get<Cliente[]>(this.api);
   }
 
-  salvarCliente(): Subscriber<Cliente> {
-    return this.httpCliente.post<Cliente>(`${environment.api}`);
-  }
+  salvarCliente(novoCliente: Cliente): Observable<Cliente> {
+    return this.httpCliente.post<Cliente>(
+      this.api, novoCliente);  }
 
   atualizarCliente(id: number): Subscriber<Cliente> {
     return this.httpCliente.put<Cliente>(`${environment.api}/${id}`);
