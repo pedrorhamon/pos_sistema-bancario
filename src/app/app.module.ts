@@ -1,15 +1,16 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { MaterialModule } from './shared/material/material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
-import { ListagemClienteComponent } from './components/listagem-cliente/listagem-cliente.component';
-import { HttpClientModule } from '@angular/common/http';
 import { CartoesComponent } from './components/cartoes/cartoes.component';
+import { ListagemClienteComponent } from './components/listagem-cliente/listagem-cliente.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
+import { MaterialModule } from './shared/material/material.module';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,12 @@ import { CartoesComponent } from './components/cartoes/cartoes.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MaterialModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
