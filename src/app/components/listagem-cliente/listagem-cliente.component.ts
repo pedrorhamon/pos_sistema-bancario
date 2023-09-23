@@ -14,7 +14,7 @@ export class ListagemClienteComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'status', 'funcoes'];
   dataSource = new MatTableDataSource<Cliente>;
-  cliente!: Cliente;
+  cliente: Cliente | undefined;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -78,8 +78,14 @@ export class ListagemClienteComponent implements AfterViewInit {
       }})}
 
 
-      editar(id: number, cliente: Cliente) {
-        this.clienteService.atualizar(id, cliente!).subscribe()
+      editar(cliente: Cliente) {
+        this.clienteService.atualizar(cliente).subscribe(
+          (resultado) => {
+            console.log(`Cliente com ID ${resultado.id} foi atualizado com sucesso!`);
+          },
+          (erro) => {
+            console.error(`Erro ao atualizar cliente:`, erro);
+          }
+        );
       }
-
 }
