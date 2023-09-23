@@ -28,6 +28,10 @@ export class SalvarClienteComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.formGroup.value("id");
+  }
+
+  editar() {
 
   }
 
