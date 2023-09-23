@@ -31,11 +31,6 @@ export class SalvarClienteComponent implements OnInit {
 
   }
 
-  editar() {
-    this.formGroup.value("id");
-  }
-
-
   cadastrar() {
     const cliente: Cliente = this.formGroup.value;
     this.clienteService.salvarCliente(cliente).subscribe({

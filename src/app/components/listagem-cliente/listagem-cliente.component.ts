@@ -14,6 +14,7 @@ export class ListagemClienteComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'status', 'funcoes'];
   dataSource = new MatTableDataSource<Cliente>;
+  cliente!: Cliente;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -75,5 +76,10 @@ export class ListagemClienteComponent implements AfterViewInit {
             })
           }})
       }})}
+
+
+      editar(id: number, cliente: Cliente) {
+        this.clienteService.atualizar(id, cliente!).subscribe()
+      }
 
 }
