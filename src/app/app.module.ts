@@ -3,11 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContasComponent } from './components/contas/contas.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ClienteModule } from './pages/cliente/cliente.module';
 import { MaterialModule } from './shared/material/material.module';
@@ -16,7 +14,6 @@ import { MaterialModule } from './shared/material/material.module';
   declarations: [
     AppComponent,
     NavbarComponent,
-    ContasComponent
   ],
   imports: [
     BrowserModule,
@@ -26,11 +23,9 @@ import { MaterialModule } from './shared/material/material.module';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    NgxMaskDirective,
-    NgxMaskPipe,
     ClienteModule
   ],
-  providers: [provideNgxMask()],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

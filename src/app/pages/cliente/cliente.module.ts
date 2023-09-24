@@ -5,7 +5,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { ContasComponent } from 'src/app/components/contas/contas.component';
+import { SalvarContasComponent } from 'src/app/components/contas/salvar-contas/salvar-contas.component';
 import { ListagemClienteComponent } from 'src/app/components/listagem-cliente/listagem-cliente.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 
@@ -15,6 +16,8 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
   declarations: [
     SalvarClienteComponent,
     ListagemClienteComponent,
+    ContasComponent,
+    SalvarContasComponent
   ],
   imports: [
     CommonModule,
@@ -23,12 +26,10 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
-    MaterialModule,
-    NgxMaskDirective,
-    NgxMaskPipe,
+    MaterialModule
    ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [provideNgxMask()],
+  providers: [],
   exports: []
 })
 

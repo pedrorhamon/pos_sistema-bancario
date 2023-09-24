@@ -28,10 +28,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        component: ContasComponent
+      },
+      {
+        path: 'novo',
         component: SalvarContasComponent
       },
       {
-        path: 'contas/:id',
+        path: 'editar/:id',
         component: SalvarClienteComponent
       },
       {
