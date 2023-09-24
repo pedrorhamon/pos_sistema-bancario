@@ -14,6 +14,16 @@ export class ContasService {
 
   constructor(private httpCliente: HttpClient) { }
 
+  // Método para realizar um saque em uma conta
+  saque(id: number, valor: number): Observable<any> {
+    return this.httpCliente.post(`${this.api}/${id}/saque`, { valor });
+  }
+
+  // Método para realizar um depósito em uma conta
+  deposito(id: number, valor: number): Observable<any> {
+    return this.httpCliente.post(`${this.api}/${id}/deposito`, { valor });
+  }
+
   listarContas(): Observable<Conta[]> {
     return this.httpCliente.get<Conta[]>(this.api);
   }
