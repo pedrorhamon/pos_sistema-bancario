@@ -9,6 +9,7 @@ import { ContasComponent } from 'src/app/components/contas/contas.component';
 import { SalvarContasComponent } from 'src/app/components/contas/salvar-contas/salvar-contas.component';
 import { ListagemClienteComponent } from 'src/app/components/listagem-cliente/listagem-cliente.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
+import { DepositoModalComponent } from 'src/app/shared/modal/deposito-modal/deposito-modal.component';
 
 
 
@@ -17,7 +18,8 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     SalvarClienteComponent,
     ListagemClienteComponent,
     ContasComponent,
-    SalvarContasComponent
+    SalvarContasComponent,
+    DepositoModalComponent
   ],
   imports: [
     CommonModule,
