@@ -42,6 +42,18 @@ const routes: Routes = [
         path: 'id',
         component: ContasComponent
       },
+      {
+        path: 'id/deposito/',
+        component: SalvarContasComponent
+      },
+      {
+        path: 'id/saque/',
+        component: SalvarContasComponent
+      },
+      {
+        path: 'id/transferencia/',
+        component: SalvarContasComponent
+      },
     ]
   },
 ];
