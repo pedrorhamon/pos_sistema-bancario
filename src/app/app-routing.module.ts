@@ -4,6 +4,9 @@ import { ListagemClienteComponent } from './components/listagem-cliente/listagem
 import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
 import { ContasComponent } from './components/contas/contas.component';
 import { SalvarContasComponent } from './components/contas/salvar-contas/salvar-contas.component';
+import { DepositoModalComponent } from './shared/modal/deposito-modal/deposito-modal.component';
+import { SaqueModalComponent } from './shared/modal/saque-modal/saque-modal.component';
+import { TransferenciaModalComponent } from './shared/modal/transferencia-modal/transferencia-modal.component';
 
 const routes: Routes = [
   {
@@ -39,24 +42,24 @@ const routes: Routes = [
         component: SalvarClienteComponent
       },
       {
-        path: 'id',
+        path: ':id',
         component: ContasComponent
       },
       {
-        path: 'id',
+        path: ':id',
         component: ContasComponent
       },
       {
-        path: 'id/deposito/',
-        component: SalvarContasComponent
+        path: ':id/deposito/',
+        component: DepositoModalComponent
       },
       {
-        path: 'id/saque/',
-        component: SalvarContasComponent
+        path: ':id/saque/',
+        component: SaqueModalComponent
       },
       {
-        path: 'id/transferencia/',
-        component: SalvarContasComponent
+        path: ':id/transferencia/',
+        component: TransferenciaModalComponent
       },
     ]
   },

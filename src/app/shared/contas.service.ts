@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { Conta } from './model/conta';
+import { Transferencia } from './model/transferencia';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +16,17 @@ export class ContasService {
   constructor(private httpCliente: HttpClient) { }
 
   // Método para realizar um saque em uma conta
-  saque(id: number, valor: number): Observable<any> {
-    return this.httpCliente.post(`${this.api}/${id}/saque`, { valor });
+  saque(conta: Conta, valor: number): Observable<any> {
+    return this.httpCliente.post(`${this.api}/${conta.id}/saque`, { valor });
   }
 
   // Método para realizar um depósito em uma conta
-  deposito(id: number, valor: number): Observable<any> {
-    return this.httpCliente.post(`${this.api}/${id}/deposito`, { valor });
+  deposito(conta: Conta, valor: number): Observable<any> {
+    return this.httpCliente.post(`${this.api}/${conta.id}/deposito`, { valor });
+  }
+
+  transferencia(conta: Conta, transferencia: Transferencia): Observable<any> {
+    return this.httpCliente.post(`${this.api}/${conta.id}/transferencia`, transferencia);
   }
 
   listarContas(): Observable<Conta[]> {
@@ -45,9 +50,8 @@ export class ContasService {
 
 
   pesquisarPorId(id: number): Observable<Conta> {
-    return this.httpCliente.get<Conta>(`${this.api}${id}`);
+    return this.httpCliente.get<Conta>(`${this.api}/${id}`);
   }
-
 
   atualizar(conta: Conta): Observable<Conta> {
     return this.httpCliente.put<Conta>(`${this.api}${conta.id}`, conta);

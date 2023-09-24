@@ -10,11 +10,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ClienteModule } from './pages/cliente/cliente.module';
 import { MaterialModule } from './shared/material/material.module';
 import { DepositoModalComponent } from './shared/modal/deposito-modal/deposito-modal.component';
+import { SaqueModalComponent } from './shared/modal/saque-modal/saque-modal.component';
+import { TransferenciaModalComponent } from './shared/modal/transferencia-modal/transferencia-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    SaqueModalComponent,
+    TransferenciaModalComponent
   ],
   imports: [
     BrowserModule,
