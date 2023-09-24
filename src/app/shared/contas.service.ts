@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 
 import { Conta } from './model/conta';
 import { Transferencia } from './model/transferencia';
+import { SaqueDeposito } from './model/saque-deposito';
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +17,17 @@ export class ContasService {
   constructor(private httpCliente: HttpClient) { }
 
   // Método para realizar um saque em uma conta
-  saque(conta: Conta, valor: number): Observable<any> {
-    return this.httpCliente.post(`${this.api}/${conta.id}/saque`, { valor });
+  saque(id: number, saqueDeposito: SaqueDeposito): Observable<any> {
+    return this.httpCliente.post(`${this.api}/${id}/saque`, { saqueDeposito });
   }
 
   // Método para realizar um depósito em uma conta
-  deposito(conta: Conta, valor: number): Observable<any> {
-    return this.httpCliente.post(`${this.api}/${conta.id}/deposito`, { valor });
+  deposito(id: number, deposito: SaqueDeposito): Observable<any> {
+    return this.httpCliente.post(`${this.api}/${id}/deposito`, deposito);
   }
 
-  transferencia(conta: Conta, transferencia: Transferencia): Observable<any> {
-    return this.httpCliente.post(`${this.api}/${conta.id}/transferencia`, transferencia);
+  transferencia(id: number, transferencia: Transferencia): Observable<any> {
+    return this.httpCliente.post(`${this.api}/${id}/transferencia`, transferencia);
   }
 
   listarContas(): Observable<Conta[]> {
