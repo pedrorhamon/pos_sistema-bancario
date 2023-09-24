@@ -3,21 +3,20 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CartoesComponent } from './components/cartoes/cartoes.component';
-import { ListagemClienteComponent } from './components/listagem-cliente/listagem-cliente.component';
+import { ContasComponent } from './components/contas/contas.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SalvarClienteComponent } from './components/salvar-cliente/salvar-cliente.component';
-import { MaterialModule } from './shared/material/material.module';
-import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { ClienteModule } from './pages/cliente/cliente.module';
+import { MaterialModule } from './shared/material/material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    ContasComponent
   ],
   imports: [
     BrowserModule,
