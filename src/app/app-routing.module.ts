@@ -50,15 +50,15 @@ const routes: Routes = [
         component: ContasComponent
       },
       {
-        path: ':id/deposito/',
+        path: 'deposito/',
         component: DepositoModalComponent
       },
       {
-        path: ':id/saque/',
+        path: ':saque/',
         component: SaqueModalComponent
       },
       {
-        path: ':id/transferencia/',
+        path: 'transferencia/',
         component: TransferenciaModalComponent
       },
     ]
