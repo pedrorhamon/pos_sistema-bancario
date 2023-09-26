@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ClienteService } from 'src/app/shared/cliente.service';
 import { ContasService } from 'src/app/shared/contas.service';
 import { Conta } from 'src/app/shared/model/conta';
-import { SaqueDeposito } from 'src/app/shared/model/saque-deposito';
-import { Transferencia } from 'src/app/shared/model/transferencia';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,29 +11,39 @@ import Swal from 'sweetalert2';
   templateUrl: './contas.component.html',
   styleUrls: ['./contas.component.css']
 })
-export class ContasComponent implements AfterViewInit {
-
+export class ContasComponent implements AfterViewInit{
   displayedColumns: string[] = ['id', 'numero', 'agencia', 'saldo', 'cliente', 'funcoes'];
   dataSource = new MatTableDataSource<Conta>;
-  conta: Conta | undefined;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private contaService: ContasService) { }
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  constructor(private contaService: ContasService, private clienteService: ClienteService){
   }
+
 
   ngAfterViewInit() {
     this.listarContas(1, 5)
   }
 
+
   listarContas(page: number, pageSize: number) {
     this.contaService.listar_paginado(page, pageSize).subscribe(contas => {
-      this.dataSource.data = contas;
+      this.clienteService.listarCliente().subscribe(clientes => {
+        const contasComNomesDeClientes = contas.map(conta => {
+          const cliente = clientes.find(cliente => cliente.id === conta.cliente);
+          if (cliente) {
+            conta.nomeCliente = cliente.nome;
+          }
+          return conta;
+        });
+        this.dataSource.data = contasComNomesDeClientes;
+      });
     });
   }
+
+
+
 
   onPageChange(event: PageEvent) {
     const pageIndex = event.pageIndex + 1;
@@ -42,7 +51,8 @@ export class ContasComponent implements AfterViewInit {
     this.listarContas(pageIndex, pageSize);
   }
 
-  deletarConta(id: number){
+
+  deletarCLiente(id: number){
     Swal.fire({
       title: 'Você tem certeza que deseja deletar?',
       text: "Não tem como reverter essa ação",
@@ -58,7 +68,7 @@ export class ContasComponent implements AfterViewInit {
             Swal.fire({
               icon: 'success',
               title: 'Sucesso',
-              text: 'Conta deletado com sucesso!',
+              text: 'Conta deletada com sucesso!',
               showConfirmButton: false,
               timer: 1500
             })
@@ -69,63 +79,8 @@ export class ContasComponent implements AfterViewInit {
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
-              text: 'Erro ao deletar cliente!',
+              text: 'Erro ao deletar conta!',
             })
           }})
       }})}
-
-
-      editar(conta: Conta) {
-        this.contaService.atualizar(conta).subscribe(
-          (resultado) => {
-            console.log(`Conta com ID ${resultado.id} foi atualizado com sucesso!`);
-          },
-          (erro) => {
-            console.error(`Erro ao atualizar conta:`, erro);
-          }
-        );
-      }
-
-      realizarDeposito(conta: Conta, valor: number) {
-        const deposito: SaqueDeposito = { valor }; // Crie um objeto de depósito com o valor
-        this.contaService.deposito(conta.id, deposito).subscribe(
-          (resultado) => {
-            console.log(`Depósito de ${valor} realizado com sucesso na conta ${conta.numero}`);
-            // Atualize a lista de contas após o depósito, se necessário
-            this.listarContas(1, 5);
-          },
-          (erro) => {
-            console.error(`Erro ao realizar depósito:`, erro);
-          }
-        );
-      }
-
-      realizarSaque(conta: Conta, valor: number) {
-        const saque: SaqueDeposito = { valor };
-        this.contaService.saque(conta.id, saque).subscribe(
-          (resultado) => {
-            console.log(`Saque de ${valor} realizado com sucesso na conta ${conta.numero}`);
-            this.listarContas(1, 5);
-          },
-          (erro) => {
-            console.error(`Erro ao realizar saque:`, erro);
-          }
-        );
-      }
-
-      realizarTransferencia(contaOrigem: Conta, contaDestino: Conta, valor: number) {
-        const transferencia: Transferencia = {
-          valor,
-          conta_destino: contaDestino.id
-        };
-        this.contaService.transferencia(contaOrigem.id, transferencia).subscribe(
-          (resultado) => {
-            console.log(`Transferência de ${valor} realizada com sucesso da conta ${contaOrigem.numero} para ${contaDestino.numero}`);
-            this.listarContas(1, 5);
-          },
-          (erro) => {
-            console.error(`Erro ao realizar transferência:`, erro);
-          }
-        );
-      }
 }
