@@ -17,17 +17,17 @@ export class ContasService {
   constructor(private httpCliente: HttpClient) { }
 
   // Método para realizar um saque em uma conta
-  saque(id: number, saqueDeposito: SaqueDeposito): Observable<any> {
-    return this.httpCliente.post(`${this.api}/${id}/saque`, { saqueDeposito });
+  saque(saque: SaqueDeposito): Observable<SaqueDeposito> {
+    return this.httpCliente.post<SaqueDeposito>(`${this.api}/${saque.conta}/saque/`, { saque });
   }
 
   // Método para realizar um depósito em uma conta
-  deposito(id: number, deposito: SaqueDeposito): Observable<any> {
-    return this.httpCliente.post(`${this.api}/${id}/deposito`, deposito);
+  deposito(deposito: SaqueDeposito): Observable<SaqueDeposito> {
+    return this.httpCliente.post<SaqueDeposito>(`${this.api}/${deposito.conta}/deposito/`, deposito);
   }
 
-  transferencia(id: number, transferencia: Transferencia): Observable<any> {
-    return this.httpCliente.post(`${this.api}/${id}/transferencia`, transferencia);
+  transferencia(transferencia: Transferencia): Observable<Transferencia> {
+    return this.httpCliente.post<Transferencia>(`${this.api}/${transferencia.conta_origem}/transferencia/`, transferencia);
   }
 
   listarContas(): Observable<Conta[]> {

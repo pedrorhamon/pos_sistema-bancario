@@ -5,4 +5,5 @@ export interface Conta {
   agencia: string;
   saldo: number;
   cliente: number;
+  nomeCliente: string;
 }
