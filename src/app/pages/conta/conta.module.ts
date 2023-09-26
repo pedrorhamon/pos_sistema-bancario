@@ -29,12 +29,8 @@ import { TransferenciaModalComponent } from 'src/app/shared/modal/transferencia-
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    RouterModule,
-    HttpClientModule,
   ],
+
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   exports: [

@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ClienteModule } from './pages/cliente/cliente.module';
 import { MaterialModule } from './shared/material/material.module';
+import { ContaModule } from './pages/conta/conta.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MaterialModule } from './shared/material/material.module';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    ClienteModule
+    ClienteModule,
+    ContaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
