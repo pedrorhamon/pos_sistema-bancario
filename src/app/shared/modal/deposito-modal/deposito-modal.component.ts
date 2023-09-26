@@ -3,44 +3,70 @@ import { DialogService } from '../dialog.service';
 import { ContasService } from '../../contas.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SaqueDeposito } from '../../model/saque-deposito';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { ClienteService } from '../../cliente.service';
+import { Conta } from '../../model/conta';
 
 @Component({
   selector: 'app-deposito-modal',
   templateUrl: './deposito-modal.component.html',
   styleUrls: ['./deposito-modal.component.css']
 })
-export class DepositoModalComponent {
+export class DepositoModalComponent implements OnInit{
+  formGroup: FormGroup;
+  contas: Conta[]
 
-  valor!: SaqueDeposito;
+  constructor(private contaService: ContasService, private router: Router, private clienteService: ClienteService){
 
-  constructor(private dialog: MatDialog, private contaService: ContasService) { }
-
-  abrirModalDeposito() {
-    const dialogRef = this.dialog.open(DepositoModalComponent, {
-      width: '400px'
+    this.formGroup = new FormGroup({
+      valor: new FormControl('', Validators.required),
+      conta: new FormControl('', Validators.required)
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      // Este é o código que será executado após o modal ser fechado
-      if (result) {
-        // Aqui você pode chamar o serviço de depósito com os dados do modal
-        const idConta = 1; // Substitua pelo ID da conta
-        this.deposito(idConta, result);
-      }
-    });
+    this.contas = []
+  }
+  ngOnInit(): void {
+    this.listarContas()
   }
 
-  deposito(id: number, valor: number): void {
-    this.contaService.deposito(id, valor).subscribe(
-      resposta => {
-        console.log('Depósito realizado com sucesso!', resposta);
-        // Faça qualquer outra ação que você deseja após o depósito
-      },
-      erro => {
-        console.error('Erro ao realizar depósito:', erro);
-        // Trate o erro conforme necessário
-      }
-    );
+  listarContas(): void{
+    this.contaService.listarContas().subscribe(contas => {
+      this.clienteService.listarCliente().subscribe(clientes => {
+        const contasComNomesDeClientes = contas.map(conta => {
+          const cliente = clientes.find(cliente => cliente.id === conta.cliente);
+          if (cliente) {
+            conta.nomeCliente = cliente.nome;
+          }
+          return conta;
+        });
+        this.contas = contasComNomesDeClientes;
+      });
+    })
   }
 
+  cadastrar() {
+    const deposito: SaqueDeposito = this.formGroup.value.valor;
+      // Modo de criação
+      this.contaService.deposito(deposito).subscribe({
+        next: () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Sucesso',
+            text: 'Depósito registrado com sucesso!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.router.navigate(['/conta']);
+        },
+        error: (error) => {
+          console.error(error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Erro ao registrar depósito!',
+          });
+        }
+      });
+    }
 }

@@ -42,14 +42,6 @@ const routes: Routes = [
         component: SalvarClienteComponent
       },
       {
-        path: ':id',
-        component: ContasComponent
-      },
-      {
-        path: ':id',
-        component: ContasComponent
-      },
-      {
         path: 'deposito/',
         component: DepositoModalComponent
       },
@@ -60,6 +52,10 @@ const routes: Routes = [
       {
         path: 'transferencia/',
         component: TransferenciaModalComponent
+      },
+      {
+        path: '',
+        component: ContasComponent
       },
     ]
   },
