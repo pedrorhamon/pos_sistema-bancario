@@ -10,7 +10,7 @@ import { TransferenciaModalComponent } from './shared/modal/transferencia-modal/
 
 const routes: Routes = [
   {
-    path: 'clientes',
+    path: 'cliente',
     children: [
       {
         path: 'novo',
@@ -27,12 +27,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'contas',
+    path: 'conta',
     children: [
-      {
-        path: '',
-        component: ContasComponent
-      },
       {
         path: 'novo',
         component: SalvarContasComponent
@@ -42,15 +38,15 @@ const routes: Routes = [
         component: SalvarClienteComponent
       },
       {
-        path: 'deposito/',
+        path: 'deposito',
         component: DepositoModalComponent
       },
       {
-        path: ':saque/',
+        path: 'saque',
         component: SaqueModalComponent
       },
       {
-        path: 'transferencia/',
+        path: 'transferencia',
         component: TransferenciaModalComponent
       },
       {

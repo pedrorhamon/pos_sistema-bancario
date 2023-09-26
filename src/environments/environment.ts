@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  api: 'https://localhost:8080/'
+  api: 'https://angular-api.xwhost.com.br/api'
 };
