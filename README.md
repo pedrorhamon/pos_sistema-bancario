@@ -1,3 +1,3 @@
 # PosFrontBancario
 
-back java framework springboot, utilizando keyclok
+projeto desenvolvido na Posgraduação Uniesp
