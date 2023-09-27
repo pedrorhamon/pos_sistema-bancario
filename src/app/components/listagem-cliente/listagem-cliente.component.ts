@@ -76,16 +76,4 @@ export class ListagemClienteComponent implements AfterViewInit {
             })
           }})
       }})}
-
-
-      editar(cliente: Cliente) {
-        this.clienteService.atualizar(cliente).subscribe(
-          (resultado) => {
-            console.log(`Cliente com ID ${resultado.id} foi atualizado com sucesso!`);
-          },
-          (erro) => {
-            console.error(`Erro ao atualizar cliente:`, erro);
-          }
-        );
-      }
 }
