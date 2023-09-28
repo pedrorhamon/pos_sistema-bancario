@@ -18,16 +18,16 @@ export class ContasService {
 
   // Método para realizar um saque em uma conta
   saque(saque: SaqueDeposito): Observable<SaqueDeposito> {
-    return this.httpCliente.post<SaqueDeposito>(`${this.api}/${saque.conta}/saque/`, { saque });
+    return this.httpCliente.post<SaqueDeposito>(`${this.api}/${saque.conta}saque`, { saque });
   }
 
   // Método para realizar um depósito em uma conta
   deposito(deposito: SaqueDeposito): Observable<SaqueDeposito> {
-    return this.httpCliente.post<SaqueDeposito>(`${this.api}/${deposito.conta}/deposito/`, deposito);
+    return this.httpCliente.post<SaqueDeposito>(`${this.api}/${deposito.conta}deposito`, deposito);
   }
 
   transferencia(transferencia: Transferencia): Observable<Transferencia> {
-    return this.httpCliente.post<Transferencia>(`${this.api}/${transferencia.conta_origem}/transferencia/`, transferencia);
+    return this.httpCliente.post<Transferencia>(`${this.api}/${transferencia.conta_origem}transferencia`, transferencia);
   }
 
   listarContas(): Observable<Conta[]> {
@@ -55,6 +55,6 @@ export class ContasService {
   }
 
   atualizar(conta: Conta): Observable<Conta> {
-    return this.httpCliente.put<Conta>(`${this.api}${conta.id}`, conta);
+    return this.httpCliente.put<Conta>(`${this.api}/${conta.id}`, conta);
   }
 }
