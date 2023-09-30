@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 import { Conta } from './model/conta';
-import { Transferencia } from './model/transferencia';
 import { SaqueDeposito } from './model/saque-deposito';
+import { Transferencia } from './model/transferencia';
 
 @Injectable({
   providedIn: 'root'

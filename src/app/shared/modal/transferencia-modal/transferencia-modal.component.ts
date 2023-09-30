@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+
 import { ClienteService } from '../../cliente.service';
+import { ContasService } from '../../contas.service';
 import { Conta } from '../../model/conta';
 import { Transferencia } from '../../model/transferencia';
-import { ContasService } from '../../contas.service';
 
 @Component({
   selector: 'app-transferencia-modal',
